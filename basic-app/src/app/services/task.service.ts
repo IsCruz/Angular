@@ -20,11 +20,11 @@ export class TaskService {
     .pipe(map(res => res));
   }
   updateTask(newTask){
-    return this.httpput(`${this.domain}/api/tasks/${newTask.id}`, newTask)
+    return this.http.put(`${this.domain}/api/tasks/${newTask._id}`, newTask)
     .pipe(map(res => res));
   }
-  deleteTask(id){
-    return this.http.delete<Task>(`${this.domain}/api/tasks/${id}`)
+  deleteTask(newTask){
+    return this.http.delete<Task>(`${this.domain}/api/tasks/${newTask._id}`)
     .pipe(map(res => res));
   }
 

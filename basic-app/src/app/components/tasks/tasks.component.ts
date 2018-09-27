@@ -33,7 +33,7 @@ addTask(event){
 
 deleteTask(id){
   const response = confirm('are you sure to delete it?');
-  if(response == true){
+  if(response){
   const tasks = this.tasks;
   this.taskService.deleteTask(id)
   .subscribe(data =>{
@@ -46,7 +46,19 @@ deleteTask(id){
     }
   });
 }
-else return;
+return;
+}
+
+updateTask(task: Task){
+  const newTask = {
+    _id: task._id,
+    title: task.title,
+    isDone: !task.isDone
+  };
+  this.taskService.updateTask(newTask)
+  .subscribe(res =>{
+    task.isDone = !task.isDone
+  });
 }
 
 }

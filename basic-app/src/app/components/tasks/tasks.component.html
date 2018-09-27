@@ -24,7 +24,7 @@
 <tbody>
 <tr *ngFor="let task of tasks">
   <td>
-    <input type="checkbox">
+    <input type="checkbox" [checked]="task.isDone" (click)="updateTask(task)">
   </td>
   <td>{{task.title}}</td>
   <td>
